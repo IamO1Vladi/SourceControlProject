@@ -10,4 +10,8 @@
     <Folder Include="Entities\Users\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\SourceControlProject.Common\SourceControlProject.Common.csproj" />
+  </ItemGroup>
+
 </Project>

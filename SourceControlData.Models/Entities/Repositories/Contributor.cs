@@ -2,5 +2,6 @@
 
 public class Contributor
 {
-    
+    //ToDo: Add relationship properties
+
 }
