@@ -29,11 +29,11 @@ public class PullRequest
     [ForeignKey(nameof(Repository))]
     public Guid RepositoryId { get; set; }
 
-    public Repository Repository { get; set; }
+    public Repository Repository { get; set; } = null!;
 
     [Required]
     [ForeignKey(nameof(Author))]
     public Guid AuthorId { get; set; }
     
-    public ApplicationUser Author { get; set; }
+    public ApplicationUser Author { get; set; } = null!;
 }

@@ -1,6 +1,9 @@
 ﻿namespace SourceControlProject.Common.DatabaseConstraints;
 
-public class IssueConstraints
+public static class IssueConstraints
 {
-    
+
+    public const int MaxTitleLength = 150;
+    public const int MaxDescriptionLength = 1000;
+
 }

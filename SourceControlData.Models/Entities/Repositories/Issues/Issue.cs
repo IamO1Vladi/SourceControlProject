@@ -40,13 +40,13 @@ public class Issue
     [ForeignKey(nameof(Repository))]
     public Guid RepositoryId { get; set; }
 
-    public Repository Repository { get; set; }
+    public Repository Repository { get; set; } = null!;
 
     [Required]
     [ForeignKey(nameof(Owner))]
     public Guid OwnerId { get; set; }
 
-    public ApplicationUser Owner { get; set; }
+    public ApplicationUser Owner { get; set; } = null!;
 
     public ICollection<IssueTag> Tags { get; set; }
 }

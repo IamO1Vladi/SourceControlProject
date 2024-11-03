@@ -33,5 +33,5 @@ public class FileModification
     [ForeignKey(nameof(Commit))]
     public Guid CommitId { get; set; }
 
-    public Commit Commit { get; set; }
+    public Commit Commit { get; set; } = null!;
 }

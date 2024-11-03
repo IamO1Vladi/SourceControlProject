@@ -18,11 +18,11 @@ public class IssueTag
     [ForeignKey(nameof(Issue))]
     public Guid IssueId { get; set; }
 
-    public Issue Issue { get; set; }
+    public Issue Issue { get; set; } = null!;
 
     [Required]
     [ForeignKey(nameof(Tag))]
     public Guid TagId { get; set; }
 
-    public Tag Tag { get; set; }
+    public Tag Tag { get; set; } = null!;
 }

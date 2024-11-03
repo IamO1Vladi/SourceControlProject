@@ -2,5 +2,7 @@
 
 public enum PullRequestStatus
 {
-    
+    Open,
+    Merged,
+    Closed
 }
