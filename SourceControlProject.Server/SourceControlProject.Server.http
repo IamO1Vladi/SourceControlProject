@@ -1,0 +1,6 @@
+@SourceControlProject.Server_HostAddress = http://localhost:5229
+
+GET {{SourceControlProject.Server_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
