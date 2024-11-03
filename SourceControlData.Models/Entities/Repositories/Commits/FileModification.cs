@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using SourceControlProject.Common.DatabaseConstraints;
 using SourceControlProject.Data.Models.Enums;
 
@@ -28,4 +29,9 @@ public class FileModification
 
     //ToDo: Add relationship properties
 
+    [Required]
+    [ForeignKey(nameof(Commit))]
+    public Guid CommitId { get; set; }
+
+    public Commit Commit { get; set; }
 }

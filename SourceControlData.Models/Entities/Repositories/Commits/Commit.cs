@@ -1,4 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using SourceControlProject.Data.Models.Entities.Users;
 
 namespace SourceControlProject.Data.Models.Entities.Repositories.Commits;
 
@@ -9,6 +11,7 @@ public class Commit
     {
         this.Id= Guid.NewGuid();
         this.CreatedAt= DateTime.UtcNow;
+        this.FileModifications = new HashSet<FileModification>();
     }
 
     [Key]
@@ -20,4 +23,18 @@ public class Commit
 
     //ToDo: Add relationship properties
 
+    [Required]
+    [ForeignKey(nameof(Repository))]
+    public Guid RepositoryId { get; set; }
+
+    public Repository Repository { get; set; }
+
+    [Required]
+    [ForeignKey(nameof(Author))]
+    public Guid AuthorId { get; set; }
+
+    public ApplicationUser Author { get; set; }
+
+    public ICollection<FileModification> FileModifications { get; set; }
+ 
 }

@@ -1,4 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using SourceControlProject.Data.Models.Entities.Users;
 using SourceControlProject.Data.Models.Enums;
 
 namespace SourceControlProject.Data.Models.Entities.Repositories;
@@ -22,4 +24,16 @@ public class PullRequest
     public DateTime CreatedAt { get; set; }
 
     //ToDo: Add relationship properties
+
+    [Required]
+    [ForeignKey(nameof(Repository))]
+    public Guid RepositoryId { get; set; }
+
+    public Repository Repository { get; set; }
+
+    [Required]
+    [ForeignKey(nameof(Author))]
+    public Guid AuthorId { get; set; }
+    
+    public ApplicationUser Author { get; set; }
 }

@@ -8,6 +8,7 @@ public class Tag
     public Tag()
     {
         this.Id = Guid.NewGuid();
+        this.Issues = new HashSet<IssueTag>();
     }
 
     [Key]
@@ -19,4 +20,6 @@ public class Tag
     public string Name { get; set; } = null!;
 
     //ToDo: Add relationship properties
+
+    public ICollection<IssueTag> Issues { get; set; }
 }

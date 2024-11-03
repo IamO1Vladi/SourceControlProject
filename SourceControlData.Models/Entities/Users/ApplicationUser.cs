@@ -1,5 +1,7 @@
 ﻿using SourceControlProject.Common.DatabaseConstraints;
 using System.ComponentModel.DataAnnotations;
+using SourceControlProject.Data.Models.Entities.Repositories;
+using SourceControlProject.Data.Models.Entities.Repositories.Issues;
 
 namespace SourceControlProject.Data.Models.Entities.Users;
 
@@ -8,6 +10,10 @@ public class ApplicationUser
     public ApplicationUser()
     {
         this.Id = Guid.NewGuid();
+        this.OwnedRepositories = new HashSet<Repository>();
+        this.Contributions = new HashSet<Contributor>();
+        this.IssuesCreated = new HashSet<Issue>();
+        this.PullRequests= new HashSet<PullRequest>();
     }
 
     [Key]
@@ -27,5 +33,11 @@ public class ApplicationUser
 
     public byte[] PasswordSalt { get; set; } = null!;
 
-    //ToDo: Add relationship properties
+    public ICollection<Repository> OwnedRepositories { get; set; }
+
+    public ICollection<Contributor> Contributions { get; set; }
+
+    public ICollection<Issue> IssuesCreated { get; set; }
+
+    public ICollection<PullRequest> PullRequests { get; set; }
 }

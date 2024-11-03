@@ -1,5 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using SourceControlProject.Common.DatabaseConstraints;
+using SourceControlProject.Data.Models.Entities.Users;
 using SourceControlProject.Data.Models.Enums;
 
 namespace SourceControlProject.Data.Models.Entities.Repositories.Issues;
@@ -11,6 +13,7 @@ public class Issue
     {
         Id = Guid.NewGuid();
         this.CreatedAt = DateTime.UtcNow;
+        this.Tags = new HashSet<IssueTag>();
     }
 
     [Key]
@@ -33,4 +36,17 @@ public class Issue
 
     //ToDo: Add relationship properties
 
+    [Required]
+    [ForeignKey(nameof(Repository))]
+    public Guid RepositoryId { get; set; }
+
+    public Repository Repository { get; set; }
+
+    [Required]
+    [ForeignKey(nameof(Owner))]
+    public Guid OwnerId { get; set; }
+
+    public ApplicationUser Owner { get; set; }
+
+    public ICollection<IssueTag> Tags { get; set; }
 }
